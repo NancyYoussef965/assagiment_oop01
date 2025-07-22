@@ -34,19 +34,25 @@ namespace assigment_op01
 
         #region Q3
 
-        [Flags]
-        enum Permissions
-        {
-            None = 0,
-            Read = 1 << 0,   // 1
-            Write = 1 << 1,  // 2
-            Delete = 1 << 2, // 4
-            Execute = 1 << 3 // 8
-        }
+        //[Flags]
+        //enum Permissions
+        //{
+        //    None = 0,
+        //    Read = 1 << 0,   // 1
+        //    Write = 1 << 1,  // 2
+        //    Delete = 1 << 2, // 4
+        //    Execute = 1 << 3 // 8
+        //}
 
         #endregion
 
-        #region
+        #region Q4
+        enum Colors
+        {
+            Red,
+            Green,
+            Blue
+        }
         #endregion
 
         static void Main(string[] args)
@@ -98,30 +104,46 @@ namespace assigment_op01
 
             #region 3-Assign the following Permissions (Read, write, Delete, Execute) in a form of Enum Create Variable from previous Enum to Add and Remove Permission from variable, check if specific Permission existed inside variable
 
-            Permissions userPermissions = Permissions.None;
-            userPermissions |= Permissions.Read;    
-            userPermissions |= Permissions.Write;
-            Console.WriteLine("After adding Read and Write:");
-            Console.WriteLine(userPermissions);
-            if (userPermissions.HasFlag(Permissions.Read))
-            {
-                Console.WriteLine("User has Read permission");
+            //Permissions userPermissions = Permissions.None;
+            //userPermissions |= Permissions.Read;    
+            //userPermissions |= Permissions.Write;
+            //Console.WriteLine("After adding Read and Write:");
+            //Console.WriteLine(userPermissions);
+            //if (userPermissions.HasFlag(Permissions.Read))
+            //{
+            //    Console.WriteLine("User has Read permission");
 
-            }
+            //}
 
-            userPermissions &= ~Permissions.Read;
-            Console.WriteLine("After removing Read:");
-            Console.WriteLine(userPermissions);
+            //userPermissions &= ~Permissions.Read;
+            //Console.WriteLine("After removing Read:");
+            //Console.WriteLine(userPermissions);
 
-            if (!userPermissions.HasFlag(Permissions.Read))
-            {
-                Console.WriteLine("User does NOT have Read permission anymore");
-            }
+            //if (!userPermissions.HasFlag(Permissions.Read))
+            //{
+            //    Console.WriteLine("User does NOT have Read permission anymore");
+            //}
 
             #endregion
 
 
-            #region
+            #region  4.Create an Enum called "Colors" with the basic colors(Red, Green, Blue) as its members.Write a C# program that takes a color name as input from the user and displays a message indicating whether the input color is a primary color or not.
+
+            Console.WriteLine("Enter a color (Red, Green, Blue):");
+            string inputColor = Console.ReadLine();
+            bool isValidColor = Enum.TryParse(inputColor, true, out Colors selectedColor);
+            if (isValidColor)
+            {
+                Console.WriteLine($"{selectedColor} is a primary color.");
+
+
+            }
+            else
+            {
+                Console.WriteLine($"{inputColor} is not a primary color.");
+
+            }
+
             #endregion
 
 
